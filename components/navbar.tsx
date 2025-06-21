@@ -55,7 +55,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Button
-            className="w-full bg-teal-500 hover:bg-teal-600 text-sm px-4 py-2 rounded-full"
+            className="w-full bg-green-700 hover:bg-green-500-600 text-sm px-4 py-2 rounded-full"
             onClick={() => setIsOpen(false)}
           >
             Login to Portal

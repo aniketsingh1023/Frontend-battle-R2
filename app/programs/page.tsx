@@ -13,6 +13,7 @@ import {
   Clock,
   Users,
   Building,
+  Sparkles,
 } from "lucide-react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useState, useRef } from "react"
@@ -27,13 +28,13 @@ import AnimatedBackground from "@/components/animated-background"
 const internships = [
   {
     id: "frontend-dev",
-    title: "Frontend Development Internship",
+    title: "Frontend Development",
     company: "TechCorp Solutions",
     location: "San Francisco, CA",
     type: "Remote/Hybrid",
     duration: "3 Months",
     stipend: "$2,000/month",
-    description: "Build responsive web applications using modern frontend technologies",
+    description: "Build responsive web applications using modern frontend technologies and frameworks",
     icon: Code,
     color: "from-green-500 to-emerald-600",
     spots: 5,
@@ -64,13 +65,13 @@ const internships = [
   },
   {
     id: "data-analyst",
-    title: "Data Analytics Internship",
+    title: "Data Analytics",
     company: "DataInsights Inc",
     location: "New York, NY",
     type: "On-site",
     duration: "4 Months",
     stipend: "$2,500/month",
-    description: "Analyze large datasets to derive actionable business insights",
+    description: "Analyze large datasets to derive actionable business insights using modern analytics tools",
     icon: Database,
     color: "from-blue-500 to-cyan-600",
     spots: 3,
@@ -101,13 +102,13 @@ const internships = [
   },
   {
     id: "cybersecurity",
-    title: "Cybersecurity Internship",
+    title: "Cybersecurity",
     company: "SecureNet Systems",
     location: "Austin, TX",
     type: "Hybrid",
     duration: "6 Months",
     stipend: "$3,000/month",
-    description: "Learn to protect systems and networks from cyber threats",
+    description: "Learn to protect systems and networks from cyber threats in enterprise environments",
     icon: Lock,
     color: "from-purple-500 to-violet-600",
     spots: 2,
@@ -138,13 +139,13 @@ const internships = [
   },
   {
     id: "cloud-engineer",
-    title: "Cloud Engineering Internship",
+    title: "Cloud Engineering",
     company: "CloudTech Innovations",
     location: "Seattle, WA",
     type: "Remote",
     duration: "3 Months",
     stipend: "$2,800/month",
-    description: "Deploy and manage applications in cloud environments",
+    description: "Deploy and manage applications in cloud environments using modern DevOps practices",
     icon: Server,
     color: "from-yellow-500 to-amber-600",
     spots: 4,
@@ -175,13 +176,13 @@ const internships = [
   },
   {
     id: "ai-ml",
-    title: "AI/ML Research Internship",
+    title: "AI/ML Research",
     company: "AI Research Labs",
     location: "Boston, MA",
     type: "On-site",
     duration: "5 Months",
     stipend: "$3,500/month",
-    description: "Research and develop machine learning models and AI systems",
+    description: "Research and develop machine learning models and AI systems for real-world applications",
     icon: Cpu,
     color: "from-red-500 to-pink-600",
     spots: 2,
@@ -212,13 +213,13 @@ const internships = [
   },
   {
     id: "devops",
-    title: "DevOps Engineering Internship",
+    title: "DevOps Engineering",
     company: "DevOps Masters",
     location: "Denver, CO",
     type: "Hybrid",
     duration: "4 Months",
     stipend: "$2,600/month",
-    description: "Bridge development and operations with modern DevOps practices",
+    description: "Bridge development and operations with modern DevOps practices and automation tools",
     icon: Network,
     color: "from-indigo-500 to-blue-600",
     spots: 3,
@@ -250,7 +251,6 @@ const internships = [
 ]
 
 export default function InternshipsPage() {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
   const [selectedInternship, setSelectedInternship] = useState<(typeof internships)[0] | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
@@ -259,7 +259,6 @@ export default function InternshipsPage() {
   })
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -273,10 +272,9 @@ export default function InternshipsPage() {
         <Navbar />
       </div>
 
-      {/* Hero Section with Cool Title Animation */}
+      {/* Hero Section */}
       <section className="py-32 px-6 relative z-10" ref={containerRef}>
         <div className="max-w-7xl mx-auto text-center">
-          {/* Animated Title */}
           <div className="relative mb-12">
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
@@ -284,7 +282,6 @@ export default function InternshipsPage() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative"
             >
-              {/* Background Text Effect */}
               <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.1 }}
@@ -295,7 +292,6 @@ export default function InternshipsPage() {
                 TECH
               </motion.h1>
 
-              {/* Main Title */}
               <motion.h1
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -306,7 +302,6 @@ export default function InternshipsPage() {
               </motion.h1>
             </motion.div>
 
-            {/* Internships Text with Geometric Effect */}
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
@@ -314,7 +309,6 @@ export default function InternshipsPage() {
               className="relative mt-4"
             >
               <div className="flex items-center justify-center gap-4">
-                {/* Geometric Lines */}
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: 120 }}
@@ -339,7 +333,6 @@ export default function InternshipsPage() {
                 />
               </div>
 
-              {/* Animated Accent */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
@@ -347,20 +340,26 @@ export default function InternshipsPage() {
                 className="mt-4 h-2 w-32 mx-auto bg-gradient-to-r from-purple-500 via-emerald-400 to-cyan-400 rounded-full"
               />
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              className="absolute -top-4 -right-4"
+            >
+              <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+            </motion.div>
           </div>
 
-          {/* Subtitle with Typewriter Effect */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            style={{ opacity }}
             className="text-xl md:text-2xl text-emerald-200 max-w-4xl mx-auto mb-12 leading-relaxed"
           >
             Launch your career with hands-on experience at leading tech companies
           </motion.p>
 
-          {/* Stats with Stagger Animation */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -400,101 +399,96 @@ export default function InternshipsPage() {
         </div>
       </section>
 
-      {/* Internships Grid with Enhanced Animations */}
-      <section className="py-20 px-6 max-w-7xl mx-auto relative z-10">
+      {/* Minimalist Internships Grid */}
+      <section className="py-20 px-6 max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {internships.map((internship, index) => (
             <motion.div
               key={internship.id}
-              initial={{ opacity: 0, y: 100, rotateX: -15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.8,
+                duration: 0.6,
                 delay: index * 0.1,
-                type: "spring",
-                stiffness: 100,
               }}
               viewport={{ once: true }}
-              className="relative cursor-pointer perspective-1000"
-              onMouseEnter={() => setHoveredCard(internship.id)}
-              onMouseLeave={() => setHoveredCard(null)}
+              className="group cursor-pointer"
               onClick={() => setSelectedInternship(internship)}
             >
               <motion.div
-                animate={{
-                  scale: hoveredCard === internship.id ? 1.05 : 1,
-                  rotateY: hoveredCard === internship.id ? 5 : 0,
-                  z: hoveredCard === internship.id ? 50 : 0,
-                }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className={`bg-black/40 backdrop-blur-xl rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all duration-500 overflow-hidden group ${
-                  hoveredCard === internship.id ? "shadow-2xl shadow-emerald-500/25" : ""
-                }`}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 hover:border-emerald-400/30 transition-all duration-500 overflow-hidden h-full"
               >
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                <div className="relative p-8">
-                  {/* Header with Enhanced Icon */}
-                  <div className="flex items-start justify-between mb-6">
+                <div className="p-10">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-8">
                     <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className={`flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${internship.color} shadow-lg relative overflow-hidden`}
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${internship.color} flex items-center justify-center shadow-lg`}
                     >
-                      <div className="absolute inset-0 bg-white/20 animate-pulse" />
-                      <internship.icon className="w-8 h-8 text-white relative z-10" />
+                      <internship.icon className="w-10 h-10 text-white" />
                     </motion.div>
-                    <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: index * 0.1 + 0.5 }}>
-                      <Badge
-                        variant="secondary"
-                        className="bg-emerald-900/50 text-emerald-300 border-emerald-500/30 backdrop-blur-sm"
-                      >
+                    <div className="text-right">
+                      <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 mb-2">
                         {internship.spots} spots
                       </Badge>
-                    </motion.div>
+                      <div className="text-2xl font-bold text-emerald-400">{internship.stipend}</div>
+                      <div className="text-sm text-emerald-300/80">per month</div>
+                    </div>
                   </div>
 
-                  {/* Content with Stagger Animation */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                  >
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
-                      {internship.title}
-                    </h3>
-                    <p className="text-emerald-400 font-semibold mb-3">{internship.company}</p>
-                    <p className="text-emerald-200/80 mb-6 line-clamp-2">{internship.description}</p>
-                  </motion.div>
+                  {/* Content */}
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                        {internship.title}
+                      </h3>
+                      <p className="text-xl text-emerald-400 font-semibold mb-4">{internship.company}</p>
+                      <p className="text-emerald-200/80 text-lg leading-relaxed">{internship.description}</p>
+                    </div>
 
-                  {/* Details with Icon Animations */}
-                  <div className="space-y-3 mb-6">
-                    <motion.div className="flex items-center text-sm text-emerald-300" whileHover={{ x: 5 }}>
-                      <MapPin className="w-4 h-4 mr-2" />
-                      {internship.location} • {internship.type}
-                    </motion.div>
-                    <motion.div className="flex items-center text-sm text-emerald-300" whileHover={{ x: 5 }}>
-                      <Clock className="w-4 h-4 mr-2" />
-                      {internship.duration} • {internship.stipend}
-                    </motion.div>
-                    <motion.div className="flex items-center text-sm text-emerald-300" whileHover={{ x: 5 }}>
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Apply by {internship.deadline}
+                    {/* Key Info */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-3">
+                        <div className="flex items-center text-emerald-300">
+                          <MapPin className="w-5 h-5 mr-3 text-emerald-400" />
+                          <span className="text-sm">{internship.location}</span>
+                        </div>
+                        <div className="flex items-center text-emerald-300">
+                          <Clock className="w-5 h-5 mr-3 text-emerald-400" />
+                          <span className="text-sm">{internship.duration}</span>
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex items-center text-emerald-300">
+                          <Building className="w-5 h-5 mr-3 text-emerald-400" />
+                          <span className="text-sm">{internship.type}</span>
+                        </div>
+                        <div className="flex items-center text-emerald-300">
+                          <Calendar className="w-5 h-5 mr-3 text-emerald-400" />
+                          <span className="text-sm">Apply by {internship.deadline}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* CTA */}
+                    <motion.div
+                      className="flex items-center justify-between pt-6 border-t border-white/10"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <span className="text-emerald-400 font-semibold text-lg">View Details</span>
+                      <ArrowRight className="w-6 h-6 text-emerald-400 group-hover:translate-x-2 transition-transform duration-300" />
                     </motion.div>
                   </div>
-
-                  {/* Enhanced CTA */}
-                  <motion.div className="flex items-center text-emerald-400 group/cta" whileHover={{ x: 10 }}>
-                    <span className="mr-2 font-semibold">View Details</span>
-                    <ArrowRight className="w-5 h-5 group-hover/cta:translate-x-2 transition-transform" />
-                  </motion.div>
                 </div>
               </motion.div>
             </motion.div>
@@ -504,41 +498,41 @@ export default function InternshipsPage() {
 
       {/* Enhanced Modal */}
       <Dialog open={!!selectedInternship} onOpenChange={() => setSelectedInternship(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-black/90 backdrop-blur-xl border-emerald-500/30 text-white">
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto bg-black/95 backdrop-blur-xl border-emerald-500/30 text-white">
           {selectedInternship && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
             >
-              <DialogHeader className="pb-6">
-                <div className="flex items-start gap-6">
+              <DialogHeader className="pb-8">
+                <div className="flex items-start gap-8">
                   <motion.div
                     initial={{ rotate: -180, scale: 0 }}
                     animate={{ rotate: 0, scale: 1 }}
                     transition={{ duration: 0.6, type: "spring" }}
-                    className={`flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-r ${selectedInternship.color} shadow-lg`}
+                    className={`flex items-center justify-center w-24 h-24 rounded-3xl bg-gradient-to-br ${selectedInternship.color} shadow-xl`}
                   >
-                    <selectedInternship.icon className="w-10 h-10 text-white" />
+                    <selectedInternship.icon className="w-12 h-12 text-white" />
                   </motion.div>
                   <div className="flex-1">
-                    <DialogTitle className="text-3xl font-bold text-white mb-2">{selectedInternship.title}</DialogTitle>
-                    <p className="text-xl text-emerald-400 font-semibold mb-3">{selectedInternship.company}</p>
-                    <div className="flex flex-wrap gap-4 text-sm text-emerald-300">
+                    <DialogTitle className="text-4xl font-bold text-white mb-3">{selectedInternship.title}</DialogTitle>
+                    <p className="text-2xl text-emerald-400 font-semibold mb-4">{selectedInternship.company}</p>
+                    <div className="flex flex-wrap gap-6 text-emerald-300">
                       <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-1" />
+                        <MapPin className="w-5 h-5 mr-2" />
                         {selectedInternship.location}
                       </div>
                       <div className="flex items-center">
-                        <Building className="w-4 h-4 mr-1" />
+                        <Building className="w-5 h-5 mr-2" />
                         {selectedInternship.type}
                       </div>
                       <div className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
+                        <Clock className="w-5 h-5 mr-2" />
                         {selectedInternship.duration}
                       </div>
                       <div className="flex items-center">
-                        <Users className="w-4 h-4 mr-1" />
+                        <Users className="w-5 h-5 mr-2" />
                         {selectedInternship.spots} positions
                       </div>
                     </div>
@@ -549,52 +543,50 @@ export default function InternshipsPage() {
                     transition={{ delay: 0.3 }}
                     className="text-right"
                   >
-                    <div className="text-2xl font-bold text-emerald-400">{selectedInternship.stipend}</div>
-                    <div className="text-sm text-emerald-300">Monthly Stipend</div>
+                    <div className="text-3xl font-bold text-emerald-400">{selectedInternship.stipend}</div>
+                    <div className="text-emerald-300">Monthly Stipend</div>
                   </motion.div>
                 </div>
               </DialogHeader>
 
-              <div className="space-y-8">
-                {/* Rest of modal content remains the same but with enhanced styling */}
+              <div className="space-y-10">
                 <div>
-                  <h3 className="text-xl font-semibold text-emerald-400 mb-3">Overview</h3>
-                  <p className="text-emerald-200 leading-relaxed">{selectedInternship.description}</p>
+                  <h3 className="text-2xl font-bold text-emerald-400 mb-4">Overview</h3>
+                  <p className="text-emerald-200 text-lg leading-relaxed">{selectedInternship.description}</p>
                 </div>
 
                 <Separator className="bg-emerald-500/30" />
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-10">
                   <div>
-                    <h3 className="text-xl font-semibold text-emerald-400 mb-4">Key Details</h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
+                    <h3 className="text-xl font-bold text-emerald-400 mb-6">Key Details</h3>
+                    <div className="space-y-4">
+                      <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-emerald-300">Start Date:</span>
-                        <span className="text-white">{selectedInternship.details.startDate}</span>
+                        <span className="text-white font-semibold">{selectedInternship.details.startDate}</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-emerald-300">Application Deadline:</span>
-                        <span className="text-white">{selectedInternship.deadline}</span>
+                        <span className="text-white font-semibold">{selectedInternship.deadline}</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-emerald-300">Duration:</span>
-                        <span className="text-white">{selectedInternship.duration}</span>
+                        <span className="text-white font-semibold">{selectedInternship.duration}</span>
                       </div>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between py-2">
                         <span className="text-emerald-300">Available Positions:</span>
-                        <span className="text-white">{selectedInternship.spots}</span>
+                        <span className="text-white font-semibold">{selectedInternship.spots}</span>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-semibold text-emerald-400 mb-4">Skills You'll Learn</h3>
-                    <div className="flex flex-wrap gap-2">
+                    <h3 className="text-xl font-bold text-emerald-400 mb-6">Skills You'll Learn</h3>
+                    <div className="flex flex-wrap gap-3">
                       {selectedInternship.details.skills.map((skill, index) => (
                         <Badge
                           key={index}
-                          variant="secondary"
-                          className="bg-emerald-900/30 text-emerald-300 border-emerald-500/30"
+                          className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30 px-4 py-2"
                         >
                           {skill}
                         </Badge>
@@ -605,54 +597,58 @@ export default function InternshipsPage() {
 
                 <Separator className="bg-emerald-500/30" />
 
-                <div>
-                  <h3 className="text-xl font-semibold text-emerald-400 mb-4">Responsibilities</h3>
-                  <ul className="space-y-2">
-                    {selectedInternship.details.responsibilities.map((responsibility, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-emerald-200">{responsibility}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="grid md:grid-cols-2 gap-10">
+                  <div>
+                    <h3 className="text-xl font-bold text-emerald-400 mb-6">Responsibilities</h3>
+                    <ul className="space-y-3">
+                      {selectedInternship.details.responsibilities.map((responsibility, index) => (
+                        <li key={index} className="flex items-start">
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                          <span className="text-emerald-200 leading-relaxed">{responsibility}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-emerald-400 mb-6">Requirements</h3>
+                    <ul className="space-y-3">
+                      {selectedInternship.details.requirements.map((requirement, index) => (
+                        <li key={index} className="flex items-start">
+                          <div className="w-2 h-2 bg-emerald-400 rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                          <span className="text-emerald-200 leading-relaxed">{requirement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-emerald-400 mb-4">Requirements</h3>
-                  <ul className="space-y-2">
-                    {selectedInternship.details.requirements.map((requirement, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-emerald-200">{requirement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-emerald-400 mb-4">What You'll Get</h3>
-                  <ul className="space-y-2">
+                  <h3 className="text-xl font-bold text-emerald-400 mb-6">What You'll Get</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
                     {selectedInternship.details.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        <span className="text-emerald-200">{benefit}</span>
-                      </li>
+                      <div key={index} className="flex items-start">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full mt-3 mr-4 flex-shrink-0"></div>
+                        <span className="text-emerald-200 leading-relaxed">{benefit}</span>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-emerald-400 mb-4">Application Process</h3>
-                  <p className="text-emerald-200 leading-relaxed">{selectedInternship.details.applicationProcess}</p>
+                  <h3 className="text-xl font-bold text-emerald-400 mb-6">Application Process</h3>
+                  <p className="text-emerald-200 text-lg leading-relaxed">
+                    {selectedInternship.details.applicationProcess}
+                  </p>
                 </div>
 
-                <div className="flex gap-4 pt-6">
-                  <Button className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-3">
+                <div className="flex gap-6 pt-8">
+                  <Button className="flex-1 bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-600 hover:to-cyan-700 text-white font-bold py-4 text-lg">
                     Apply Now
                   </Button>
                   <Button
                     variant="outline"
-                    className="bg-transparent border-emerald-500 text-emerald-400 hover:bg-emerald-500/10"
+                    className="bg-transparent border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 px-8"
                   >
                     Save for Later
                   </Button>
@@ -663,7 +659,7 @@ export default function InternshipsPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Enhanced CTA Section */}
+      {/* CTA Section */}
       <section className="py-32 px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2
@@ -691,7 +687,7 @@ export default function InternshipsPage() {
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.3 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 px-12 rounded-full text-lg shadow-2xl"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-600 hover:from-emerald-600 hover:to-cyan-700 text-white font-bold py-4 px-12 rounded-full text-lg shadow-2xl"
           >
             Browse All Internships
           </motion.button>
